@@ -1,0 +1,58 @@
+<mat-toolbar class="toolbar">
+  <div>{{title}}</div>
+</mat-toolbar>
+<div class="section-main" fxLayout="row" fxLayoutAlign="center stretch">
+  <div class="section-signup" fxLayout="column" fxFlex="45">
+    <div class="section-subtitle">
+      <h2>Free account registration</h2>
+    </div>
+
+    <div class="section-social-signup" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <button type="button" (click)="signUpWithGoogle()" mat-stroked-button>
+        <mat-icon>person_add</mat-icon>
+        Google sign up
+      </button>
+      <button type="button" (click)="signUpWithFacebook()" mat-stroked-button>
+        <mat-icon>facebook</mat-icon>
+        Facebook sign up
+      </button>
+    </div>
+
+    <div class="section-form-signup">
+      <form fxLayout="column">
+        <mat-form-field appearance="outline">
+          <mat-label>First name</mat-label>
+          <input type="text" matInput placeholder="enter your first name here" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last name</mat-label>
+          <input type="text" matInput placeholder="enter your last name here" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="enter email here" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="enter password here" required>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutGap="10px">
+          <button type="button" mat-flat-button color="primary" (click)="signUpWithPasswordEmail()">
+            Sign Up
+          </button>
+          <a mat-stroked-button routerLink="/auth/login">
+            I already have an account
+          </a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <div class="section-media" fxFlex="55" [style]="artMediaSectionStyle">
+  </div>
+</div>
+

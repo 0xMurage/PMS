@@ -1,0 +1,51 @@
+<mat-toolbar class="toolbar">
+  <div>{{title}}</div>
+</mat-toolbar>
+<div class="section-main" fxLayout="row" fxLayoutAlign="center stretch">
+  <div class="section-login" fxLayout="column" fxFlex="45">
+    <div class="section-subtitle">
+      <h2>Please login to continue</h2>
+    </div>
+
+    <div class="section-social-login" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <button type="button" (click)="signInWithGoogle()" mat-stroked-button>
+        <mat-icon>person_add</mat-icon>
+        Google Signing
+      </button>
+      <button type="button" (click)="signInWithFacebook()" mat-stroked-button>
+        <mat-icon>facebook</mat-icon>
+        Facebook Signing
+      </button>
+    </div>
+
+    <div class="section-password-login">
+      <form fxLayout="column">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="enter email here" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="enter password here" required>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="end center" class="forgot-pass-field">
+          <a routerLink="/auth/password_reset">Forgot password</a>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="10px">
+          <button type="button" mat-flat-button color="primary" (click)="signInWithPasswordEmail()">
+            Login
+          </button>
+          <a mat-stroked-button routerLink="/auth/signup">
+            Sign up
+          </a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <div class="section-media" fxFlex="55" [style]="artMediaSectionStyle">
+  </div>
+</div>
+
