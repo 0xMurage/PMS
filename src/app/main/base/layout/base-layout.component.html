@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+
+  <button mat-icon-button class="toggle-menu" (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="title">PMS Properties</div>
+
+  <div class="fill-empty"></div>
+
+  <button mat-icon-button class="notification-bell">
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <button mat-icon-button class="Account" [mat-menu-trigger-for]="accountMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #accountMenu>
+    <button class="mat-menu-item">
+      <mat-icon>account_circle</mat-icon>
+      My Account
+    </button>
+    <button class="mat-menu-item">
+      <mat-icon>logout</mat-icon>
+      Sign out
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <mat-sidenav mode="side" [(opened)]="leftSidenavOpen">
+    <div class="propertySelector">
+      <mat-form-field appearance="standard">
+        <mat-label>Select Property</mat-label>
+        <mat-select disableRipple [(value)]="selectedProperty">
+          <mat-option value="property1">Property 1</mat-option>
+          <mat-option value="property2">Property 2</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-nav-list class="side-menu-list">
+
+      <a mat-list-item [routerLink]="[selectedProperty,'overview']">
+        <mat-icon class="material-icons-outlined">dashboard</mat-icon>
+        Overview
+      </a>
+      <a mat-list-item [routerLink]="[selectedProperty,'accounting']">
+        <mat-icon class="material-icons-outlined">payments</mat-icon>
+        Property Accounting
+      </a>
+      <a mat-list-item [routerLink]="[selectedProperty,'tenants']">
+        <mat-icon class="material-icons-outlined">groups</mat-icon>
+        Property Tenants
+      </a>
+      <a mat-list-item [routerLink]="[selectedProperty,'houses']">
+        <mat-icon class="material-icons-outlined">home_work</mat-icon>
+        Property Houses
+      </a>
+      <a mat-list-item [routerLink]="[selectedProperty,'settings']">
+        <mat-icon class="material-icons-outlined">settings</mat-icon>
+        Property Settings
+      </a>
+      <a mat-list-item routerLink="general-settings">
+        <mat-icon class="material-icons-outlined">admin_panel_settings</mat-icon>
+        General Settings
+      </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
